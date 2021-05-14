@@ -1,0 +1,42 @@
+version: '3'
+services:
+  librairy-nlp:
+    image: librairy/bow:latest
+    ports:
+     - "5000:5000"
+  mesinesp-llda-desc-l0:
+     image: librairy/mesinesp-llda-desc-l0:latest
+     ports:
+      - "8000:7777"
+     environment:
+       - NLP_ENDPOINT=http://librairy-nlp:5000
+       - JAVA_OPTS=-Xmx2048m
+     depends_on:
+       - "librairy-nlp"
+  mesinesp-llda-desc-l1:
+     image: librairy/mesinesp-llda-desc-l1:latest
+     ports:
+      - "8001:7777"
+     environment:
+       - NLP_ENDPOINT=http://librairy-nlp:5000
+       - JAVA_OPTS=-Xmx2048m
+     depends_on:
+       - "librairy-nlp"
+  mesinesp-llda-desc-l2:
+     image: librairy/mesinesp-llda-desc-l2:latest
+     ports:
+      - "8002:7777"
+     environment:
+       - NLP_ENDPOINT=http://librairy-nlp:5000
+       - JAVA_OPTS=-Xmx2048m
+     depends_on:
+       - "librairy-nlp"
+  mesinesp-llda-desc-l3:
+     image: librairy/mesinesp-llda-desc-l3:latest
+     ports:
+      - "8003:7777"
+     environment:
+       - NLP_ENDPOINT=http://librairy-nlp:5000
+       - JAVA_OPTS=-Xmx2048m
+     depends_on:
+       - "librairy-nlp"

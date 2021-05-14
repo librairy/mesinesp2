@@ -1,0 +1,38 @@
+{
+  "name": "mesinesp-t2-llda-desc-l8",
+  "description": "Medical Semantic Indexing in Spanish Shared Task based on Labeled LDA over DeSC Categories (Level 8) from Clinical Trials",
+  "contactEmail": "cbadenes@gmail.com",
+  "version": "latest",
+  "parameters": {
+      "maxdocratio": "0.8",
+      "bow" : "true",
+      "lowercase" : "true",
+      "minfreq": "20",
+      "multigrams": "false",
+      "retries":"0",
+      "seed":"1066",
+      "alpha": "0.1",
+      "beta":"0.01",
+      "iterations":"1000",
+      "stopwords":"método resultado objetivo conclusión evaluación paciente tratamiento enfermedad investigación estudio presentar mostrar infección observar utilizar experimental determinar evaluar obtener"
+  },
+  "docker": {
+    "email": "cbadenes@gmail.com",
+    "password": "docker2018",
+    "repository": "librairy/mesinesp-t2-llda-desc-l8",
+    "user": "cbadenes"
+  },
+  "dataSource": {
+    "name":"mesinesp",
+    "dataFields": {
+      "id": "id",
+      "text": ["bow_t"],
+	  "labels":["codes_level_8"]
+    },
+    "filter":"scope_s:Train AND codes_level_8:[* TO *] AND bow_t:[* TO *]",
+    "format": "SOLR_CORE",
+    "offset": 0,
+    "size": -1,
+    "url": "http://librairy.linkeddata.es/data/mesinesp"
+  }
+}

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  librairy-nlp:
+    image: librairy/bow:latest
+    ports:
+     - "5000:5000"
+  mesinesp-llda-desc-l0:
+     image: librairy/mesinesp-llda-desc-l0:latest
+     ports:
+      - "8000:7777"
+     environment:
+       - NLP_ENDPOINT=http://librairy-nlp:5000
+       - JAVA_OPTS=-Xmx1024m
+     depends_on:
+       - "librairy-nlp"
